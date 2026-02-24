@@ -1,0 +1,92 @@
+{
+    "cities": {
+        "A": {
+            "isWarehouse": false,
+            "roads": {
+                "B": 2,
+                "C": 5
+            }
+        },
+        "B": {
+            "isWarehouse": true,
+            "roads": {
+                "A": 2,
+                "F": 5
+            }
+        },
+        "C": {
+            "isWarehouse": false,
+            "roads": {
+                "A": 5,
+                "E": 4,
+                "L": 3,
+                "K": 4
+            }
+        },
+        "D": {
+            "isWarehouse": false,
+            "roads": {
+                "E": 1
+            }
+        },
+        "E": {
+            "isWarehouse": false,
+            "roads": {
+                "D": 1,
+                "F": 2,
+                "C": 4
+            }
+        },
+        "F": {
+            "isWarehouse": false,
+            "roads": {
+                "B": 5,
+                "E": 2,
+                "H": 3,
+                "G": 5
+            }
+        },
+        "G": {
+            "isWarehouse": false,
+            "roads": {
+                "F": 5,
+                "I": 2,
+                "K": 10,
+                "J": 4
+            }
+        },
+        "H": {
+            "isWarehouse": false,
+            "roads": {
+                "F": 3
+            }
+        },
+        "I": {
+            "isWarehouse": true,
+            "roads": {
+                "G": 2
+            }
+        },
+        "J": {
+            "isWarehouse": false,
+            "roads": {
+                "G": 4,
+                "K": 8
+            }
+        },
+        "K": {
+            "isWarehouse": false,
+            "roads": {
+                "C": 4,
+                "G": 10,
+                "J": 8
+            }
+        },
+        "L": {
+            "isWarehouse": false,
+            "roads": {
+                "C": 3
+            }
+        }
+    }
+}

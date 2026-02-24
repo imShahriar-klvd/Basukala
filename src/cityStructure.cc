@@ -4,9 +4,41 @@
 #include <queue>
 #include <limits>
 #include <algorithm>
+#include <fstream>
 #include "cityStructuer.hpp"
+#include <nlohmann/json.hpp>
 
 using namespace std;
+using json = nlohmann::json;
+
+CityStructure::CityStructure()
+{
+    ifstream file("../sources/location.json");
+    json data;
+    file >> data;
+    
+    for (auto& [cityName, cityData] : data["cities"].items()) 
+    {
+        bool isWarehouse = cityData["isWarehouse"];
+        string temp = cityName;
+        addCity(temp , isWarehouse);
+    }
+    
+    for (auto& [cityName, cityData] : data["cities"].items()) 
+    {
+        if (cityData.contains("roads")) 
+        {
+            string temp {cityName};
+            for (auto& [neighbor, distance] : cityData["roads"].items()) 
+            {
+                string tempNeghbor = neighbor;
+                addRoad(temp, tempNeghbor, distance);
+            }
+        }
+    }
+}
+
+
 
 void CityStructure::addCity(std::string& n, bool warehouse )
 {
@@ -19,7 +51,7 @@ void CityStructure::addRoad(string& first, string& second, int distance)
     neighborsNode[second].push_back({first, distance});
 }
 
-int CityStructure::calculatePathDistance(vector<string>& path)
+int CityStructure::calculatePathDistance(vector<string>& path)  
 {
     int sum {};
 
@@ -43,10 +75,10 @@ vector<string> CityStructure::shortestPath( string& start, string& end)
     unordered_map<std::string, bool> visited;
     unordered_map<std::string, std::string> parent;
 
-    for (auto& pair : neighborsNode)
+    for (auto& [cityName , neighborList] : neighborsNode)
     {
-        distinations[pair.first] = std::numeric_limits<int>::max(); // it should be the biggest eadge in the graph
-        visited[pair.first] = false;
+        distinations[cityName] = std::numeric_limits<int>::max(); // it should be the biggest eadge in the graph
+        visited[cityName] = false;
     }
 
     distinations[start] = {};
@@ -55,12 +87,12 @@ vector<string> CityStructure::shortestPath( string& start, string& end)
         string current;
         int minDist = numeric_limits<int>::max();
 
-        for (auto& pair : distinations)
+        for (auto& [cityName , weight] : distinations)
         {
-            if (!visited[pair.first] && pair.second < minDist)
+            if (!visited[cityName] && weight < minDist)
             {
-                minDist = pair.second;
-                current = pair.first;
+                minDist = weight;
+                current = cityName;
             }
         }
 
@@ -107,12 +139,12 @@ string CityStructure::findNearestWarehouse(string& destination)
     int minDistance = numeric_limits<int>::max();
     string nearest;
 
-    for (auto& pair : cities)
+    for (auto& [cityName , city] : cities)
     {
-        if (!pair.second.getIsWarehouse())
+        if (!city.getIsWarehouse())
             continue;
 
-        string temp {pair.first};
+        string temp {cityName};
 
         auto path = shortestPath(temp, destination);
         int total = calculatePathDistance(path);
@@ -120,7 +152,7 @@ string CityStructure::findNearestWarehouse(string& destination)
         if (total < minDistance)
         {
             minDistance = total;
-            nearest = pair.first;
+            nearest = cityName;
         }
     }
 

@@ -12,6 +12,8 @@ class CityStructure
 
 public:
 
+    CityStructure();
+
     void addCity(std::string& , bool);
     void addRoad(std::string& , std::string& ,int );
     int calculatePathDistance(std::vector<std::string>& path);
