@@ -3,7 +3,7 @@
 #include<string>
 #include<iostream>
 #include<bits/stdc++.h>
-#include<nlohmann/json.hpp>
+#include"order.hpp"
 using namespace std;
 class user
 {
@@ -11,7 +11,7 @@ private:
 string user_name="";
  long long int wallet=0;
 long long int score=0;
-
+vector<order*> item_bought;
 
 
 public:
