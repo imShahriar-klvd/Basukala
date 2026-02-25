@@ -3,14 +3,14 @@
 product::product(string name, int number, int price)
 {
     this->set_name_of_product(name);
-    this->set_number_of_product(number);
+    this->set_sold_count(number);
     this->set_price(price);
 }
 void product::set_name_of_product(const string name)
 {
     this->name_of_product = name;
 }
-void product::set_number_of_product(const int number)
+void product::set_sold_count(const int number)
 {
     if (number < 0)
     {
@@ -18,7 +18,7 @@ void product::set_number_of_product(const int number)
     }
     else
     {
-        this->number_of_product = number;
+        this->sold_count = number;
     }
 }
 void product::set_price(const int price)
@@ -36,9 +36,9 @@ void product::set_price(const int price)
 {
     return this->name_of_product;
 }
- int product ::get_number_of_product() const
+ int product ::get_sold_count() const
 {
-    return this->number_of_product;
+    return this->sold_count;
 }
  int product::get_price()const
 {
