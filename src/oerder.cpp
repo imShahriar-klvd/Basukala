@@ -2,7 +2,7 @@
 
 void order:: set_final_cost(const long long int cost)
 {
-    if (final_cost<0)
+    if (cost < 0)
     {
         throw invalid_argument("the final cost is not valid ");
     }

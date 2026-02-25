@@ -1,10 +1,12 @@
 #ifndef ORDER_HPP
 #define ORDER_HPP
-#include<bits/stdc++.h>
-#include"user.hpp"
-#include"product.hpp"
-#include<string>
+#include <bits/stdc++.h>
+#include <string>
+
 using namespace std;
+
+class product;
+
 class order
 {
 private:

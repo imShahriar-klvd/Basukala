@@ -1,4 +1,5 @@
-#include <product.hpp>
+#include "product.hpp"
+
 product::product(string name, int number, int price)
 {
     this->set_name_of_product(name);
@@ -31,16 +32,15 @@ void product::set_price(const int price)
         this->price = price;
     }
 }
-const string product ::get_name_of_product()
+ string product ::get_name_of_product()const
 {
     return this->name_of_product;
 }
-const int product ::get_number_of_product()
+ int product ::get_number_of_product() const
 {
     return this->number_of_product;
 }
-const int product::get_price()
+ int product::get_price()const
 {
     return this->price;
 }
-product ::~product() = default;
