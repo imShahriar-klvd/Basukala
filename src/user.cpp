@@ -1,4 +1,5 @@
 #include "user.hpp"
+#include"product.hpp"
 user::user(string name, long long int wallet, long long int score)
 {
     this->set_user_name(name);
@@ -49,7 +50,7 @@ void user::set_score(const long long int score)
   {
     this->item_bought.push_back(ord);
   }
-    void user:: set_persuches(order * ord1)
+    void user:: set_persuches(product * ord1)
     {
         this->persuches.push_back(ord1);
     }
@@ -57,7 +58,7 @@ vector<order *>user::get_item_bought()const
 {
     return this->item_bought;
 }
-vector<order *> user::get_persuches()const
+vector<product *> user::get_persuches()const
 {
     return this->persuches;
 }

@@ -43,7 +43,7 @@ public:
     CityStructure& getTown() {return town;}
 
 
-    void acceptCart(user* currentUser , vector<product*> cart , string destination);
+    void acceptCart(user* currentUser , vector<product*> &cart , string destination);
     
     // function for admin to accept orders
 

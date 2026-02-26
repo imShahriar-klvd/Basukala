@@ -1,6 +1,6 @@
 #include "model.hpp"
 
-void Model::acceptCart(user* currentUser , vector<product*> cart , string destination) //may chnage not final
+void Model::acceptCart(user*currentUser , vector<product*> & cart , string destination) //may chnage not final
 {
     long long cost = 0;
 
@@ -27,6 +27,6 @@ void Model::acceptCart(user* currentUser , vector<product*> cart , string destin
         newOrder->set_list_of_products(cart[i]);
     }
 
-    currentUser->set_persuches(newOrder);
+    currentUser->set_item_bought(newOrder);
     currentOrders.push(newOrder);
 }

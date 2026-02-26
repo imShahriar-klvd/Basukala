@@ -15,7 +15,7 @@ private:
   long long int wallet=0;
   long long int score=0;
   vector<order*> item_bought;
-  vector<order*> persuches;
+  vector<product*> persuches; //fix to be product
 
 public:
 
@@ -27,9 +27,9 @@ public:
   long long int get_wallet() const ;
   long long int get_score() const ;
   void set_item_bought(order * ord);
-  void set_persuches(order * ord1);
+  void set_persuches(product * ord1);
   vector<order *>get_item_bought()const;
-  vector<order *>get_persuches()const;
+  vector<product *>get_persuches()const;
 
 };
 

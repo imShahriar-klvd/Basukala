@@ -5,13 +5,13 @@
 
 using namespace std;
 
-
+//create bst create hep addpro add in bsd and heap remove remove decrease must remove number from array of bsd , and print product 
 
 class ProductManager
 {
     unordered_map<string , BST*> categories;
 
-    //heap<product> pro;
+    //heap<product> pro; //all new must be in manager frome file in const and assert data
     //ProductHeap bestSellerHeap;
     //vector<product> allproduct;
 
