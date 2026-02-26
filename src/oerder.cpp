@@ -67,7 +67,7 @@ void  order::set_list_of_products( product * prod)
  {
     return this->list_of_products;
  }
-order::order(long long int cost,string des,long long int serial,long long int insert,product * prod)
+order::order(long long int cost,string des,long long int serial,long long int insert,product * prod , user* costum): costumer(costum)
 {
     set_final_cost(cost);
     set_final_destenition(des);
