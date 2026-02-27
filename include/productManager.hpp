@@ -5,7 +5,6 @@
 
 using namespace std;
 
-//create bst create hep addpro add in bsd and heap remove remove decrease must remove number from array of bsd , and print product 
 
 class ProductManager
 {
@@ -26,6 +25,19 @@ public:
 
     void removeProduct(int);
     void decreaseProduct(); // use when user shopping
+
+    product* searchAllProducts(std::string target)
+    {
+        for(auto &[cat , proBST] : categories)
+        {
+            Node *targetPro {proBST->search(proBST->get_root() , target)};
+            if(targetPro)
+            {
+                return targetPro->items[0];
+            }
+        }
+        return nullptr;
+    }
 
 
     ~ProductManager() // not sure what to delete

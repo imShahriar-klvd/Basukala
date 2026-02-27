@@ -47,8 +47,8 @@ void Model::loadOrder() //defenetly has problem will be tasted later
         {
             string n {pro["name"]};
 
-            // find it by name
-            //orderProducts.push_back(); 
+            product* p {productMgr.searchAllProducts(n)};
+            orderProducts.push_back(p); 
         }
 
         if(orderProducts.empty())
