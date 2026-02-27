@@ -9,12 +9,11 @@
 #include <nlohmann/json.hpp>
 
 using namespace std;
-using json = nlohmann::json;
 
 CityStructure::CityStructure()
 {
     ifstream file("../sources/location.json");
-    json data;
+    nlohmann::json data;
     file >> data;
     
     for (auto& [cityName, cityData] : data["cities"].items()) 

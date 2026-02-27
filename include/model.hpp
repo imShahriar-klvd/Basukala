@@ -9,6 +9,8 @@
 #include "product.hpp"
 #include "user.hpp"
 #include <queue>
+#include <nlohmann/json.hpp>
+
 
 class OrderCompare
 {
@@ -37,14 +39,13 @@ class Model
 public:
 
     Model(){} //get orders and time and serial from json 
-
     UserManager& getUserMgr() {return userMgr;}
     ProductManager& getProductManager () {return productMgr;}
     CityStructure& getTown() {return town;}
 
-
     void acceptCart(user* currentUser , vector<product*> &cart , string destination);
-    
-    // function for admin to accept orders
+    void deliverOrders();
+    nlohmann::json saveOneOrder(order*);
 
+    ~Model();
 };
