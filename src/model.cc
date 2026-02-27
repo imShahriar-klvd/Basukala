@@ -4,7 +4,7 @@ nlohmann::json Model::saveOneOrder(order* o) // nlohmann has a function array wh
 {
     nlohmann::json js;
 
-    js["user"] = o->get_costumer()->get_user_name();
+    js["usernmae"] = o->get_costumer()->get_user_name();
     js["fullCost"] = o->get_final_cost();
     js["destination"] = o->get_final_destenition();
     js["time"] = o ->get_insert_time();
@@ -19,12 +19,58 @@ nlohmann::json Model::saveOneOrder(order* o) // nlohmann has a function array wh
 
 }
 
+void Model::loadOrder() //defenetly has problem will be tasted later
+{
+    ifstream loadJs("currentOrders.json");
 
+    nlohmann::json ordersData;
+    loadJs >> ordersData;
+
+    int biggestTime{};
+
+    for(auto &eachOrder : ordersData)
+    {
+
+        int orderTime {eachOrder["time"]};
+        if(biggestTime < eachOrder["time"])
+        {
+            biggestTime = eachOrder["time"];
+        }
+
+        string username {eachOrder["username"]};
+        int finalCost {eachOrder["fullCost"]};
+        string loc {eachOrder["destination"]};
+
+        vector<product*> orderProducts;
+ 
+        for(auto& pro : eachOrder["products"])
+        {
+            string n {pro["name"]};
+
+            // find it by name
+            //orderProducts.push_back(); 
+        }
+
+        if(orderProducts.empty())
+        {
+            return;
+        }
+
+        order* temp = new order(finalCost , loc , 0 , orderTime , orderProducts[0] , userMgr.loginUser("username"));
+
+            for(auto& p : orderProducts)
+            {
+                temp->set_list_of_products(p);
+            }
+
+            currentOrders.push(temp);
+        }
+}
 
 
 Model::Model()
 {
-
+    loadOrder();
 }
 
 

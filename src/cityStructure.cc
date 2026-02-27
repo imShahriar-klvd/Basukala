@@ -41,7 +41,7 @@ CityStructure::CityStructure()
 
 void CityStructure::addCity(std::string& n, bool warehouse )
 {
-    cities[n] = City(n, warehouse);
+    cities.insert({n, City(n, warehouse)});
 }
 
 void CityStructure::addRoad(string& first, string& second, int distance)

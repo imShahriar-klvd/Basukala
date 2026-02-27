@@ -38,7 +38,7 @@ class Model
 
 public:
 
-    Model(){} //get orders and time and serial from json 
+    Model(); //get orders and time and serial from json 
     UserManager& getUserMgr() {return userMgr;}
     ProductManager& getProductManager () {return productMgr;}
     CityStructure& getTown() {return town;}
@@ -46,6 +46,7 @@ public:
     void acceptCart(user* currentUser , vector<product*> &cart , string destination);
     void deliverOrders();
     nlohmann::json saveOneOrder(order*);
+    void loadOrder();
 
     ~Model();
 };

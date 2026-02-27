@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream>
 #include <bits/stdc++.h>
+#include "product.hpp"
 
 using namespace std;
 
